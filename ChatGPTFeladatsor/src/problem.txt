@@ -1,0 +1,59 @@
+﻿Certainly! Let's create a more advanced C# OOP problem involving class inheritance and polymorphism. In this problem, you'll build a simplified banking system with different account types: Savings Account, Checking Account, and Loan Account. You'll need to implement classes for these accounts, manage transactions, and calculate interest.
+
+**Problem Description:**
+
+Create a C# program for a banking system with the following requirements:
+
+1. Create a base class called `BankAccount` with the following properties and methods:
+   - Properties:
+     - `string AccountNumber` (read-only): A unique account number.
+     - `string AccountHolderName` (read-only): The name of the account holder.
+     - `decimal Balance` (read-only): The current balance of the account.
+   - Methods:
+     - `virtual void Deposit(decimal amount)`: Deposits the specified amount into the account.
+     - `virtual void Withdraw(decimal amount)`: Withdraws the specified amount from the account.
+     - `virtual void DisplayAccountInfo()`: Displays the account information, including account number, account holder name, and balance.
+
+2. Create three derived classes: `SavingsAccount`, `CheckingAccount`, and `LoanAccount`, which inherit from `BankAccount`. Each derived class should have its own set of properties:
+   - `SavingsAccount`: Should have an additional property `InterestRate` (e.g., 0.03 for 3% annual interest).
+   - `CheckingAccount`: Should have an additional property `OverdraftLimit` (the maximum negative balance allowed).
+   - `LoanAccount`: Should have an additional property `LoanAmount` (the initial loan amount) and `InterestRate`.
+
+3. Implement the `Deposit`, `Withdraw`, and `DisplayAccountInfo` methods for each derived class. Ensure that withdrawal attempts do not go below the overdraft limit for checking accounts and that loan accounts cannot be overdrawn.
+
+4. Implement an `UpdateBalance` method for all account types. This method should calculate and apply interest to the balance based on the account type's interest rate.
+
+5. Create an array or list of different types of bank accounts, including savings accounts, checking accounts, and loan accounts.
+
+6. Perform a series of transactions (deposits and withdrawals) on these accounts and display their information.
+
+**Sample Usage:**
+
+Here's a sample dataset and usage:
+
+```csharp
+// Create a list of bank accounts
+List<BankAccount> accounts = new List<BankAccount>
+{
+    new SavingsAccount("SA123", "Alice", 0.03m),
+    new CheckingAccount("CA456", "Bob", 1000, 500),
+    new LoanAccount("LA789", "Charlie", 5000, 0.05m)
+};
+
+// Perform transactions
+accounts[0].Deposit(2000);
+accounts[1].Withdraw(800);
+accounts[2].Withdraw(300);
+
+// Display account information
+foreach (var account in accounts)
+{
+    account.UpdateBalance(); // Apply interest
+    account.DisplayAccountInfo();
+    Console.WriteLine();
+}
+```
+
+**Solution:**
+
+Implement the solution based on the problem description above. This problem involves a bit more complexity, especially in managing balances, interest, and overdraft limits. Once you've implemented your solution, you can test it with various scenarios to ensure it works correctly.
