@@ -8,25 +8,30 @@ namespace ChatGPTFeladatsor
 {
     class BankAccount
     {
+        protected decimal balance;
+        protected string accountHolderName;
+        protected string accountNumber;
 
-        private decimal balance;
+        protected string AccountNumber => accountNumber; 
+        protected string AccountHolderName => accountHolderName; 
+        protected decimal Balance => balance;
 
-        readonly string AccountNumber;
-        readonly string AccountHolderName;
-        readonly decimal Balance;
 
         public virtual void Deposit(decimal amount)
         {
-
+            balance += amount;
         }
 
         public virtual void Withdraw(decimal amount)
         {
-
+            balance -= amount;
+        }
+        public virtual void UpdateBalance()
+        {
         }
         public virtual void DisplayAccountInfo()
         {
-            
+            Console.Write($"Account Number: {AccountNumber}\nAccount Holder Name: {AccountHolderName}\nBalance: {Balance:0.00}$\n");
         }
     }
 }
